@@ -125,6 +125,8 @@
 #define MINOR_VERSION                            0x00
 #define MAJOR_VERSION                            0x00
 
+extern const uint8_t mini_trackpad_iqs7211e_init[];
+
 /* Gesture Settings */
 /* Memory Map Position 0x4B - 0x55 */
 #define GESTURE_ENABLE_0                         0x1F
