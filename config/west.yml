@@ -14,7 +14,7 @@ manifest:
       revision: main
       import: app/west.yml
     - name: zmk-iqs7211e-driver
-      remote: amgskobo
+      remote: MeowCatpawkittie
       revision: main
     - name: zmk-rgbled-widget
       remote: caksoylar
