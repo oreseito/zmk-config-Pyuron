@@ -6,18 +6,18 @@ manifest:
       url-base: https://github.com/MeowCatpawkittie
     - name: caksoylar
       url-base: https://github.com/caksoylar  
-    - name: sekigon-gonnoc
-      url-base: https://github.com/sekigon-gonnoc
+    - name: amgskobo
+      url-base: https://github.com/amgskobo
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: v0.3.0
+      revision: main
       import: app/west.yml
-    - name: zmk-driver-iqs7211e
-      remote: sekigon-gonnoc
-      revision: mini-trackpad
+    - name: zmk-iqs7211e-driver
+      remote: amgskobo
+      revision: main
     - name: zmk-rgbled-widget
       remote: caksoylar
-      revision: v0.3
+      revision: main
   self:
     path: config
