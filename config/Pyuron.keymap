@@ -14,18 +14,25 @@
     combos { compatible = "zmk,combos"; };
 
     macros {
-        to_layer_0: to_layer_0 {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+        to0_IME_off: to_layer_0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kp INTERNATIONAL_4>;
             label = "TO_LAYER_0";
+        };
+
+        to0_IME_off: to0_IME_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kp INTERNATIONAL_5>;
+            label = "TO0_IME_OFF";
         };
     };
 
     lt_to_layer_0: lt_to_layer_0 {
         compatible = "zmk,behavior-hold-tap";
         label = "LAYER_TAP_TO_0";
-        bindings = <&mo>, <&to_layer_0>;
+        bindings = <&mo>, <&to0_IME_off>;
 
         #binding-cells = <2>;
         tapping-term-ms = <200>;
@@ -68,10 +75,10 @@
 
         layer_3 {
             bindings = <
-&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans   &trans  &trans  &trans  &trans  &trans
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &trans  &trans  &trans  &trans  &trans
-&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &trans  &trans  &trans  &trans  &trans
-&trans          &trans                  &trans          &trans                   &trans   &trans  &trans  &trans  &trans  &trans
+&kp ESCAPE      &kp HOME           &kp UP_ARROW               &kp PAGE_UP      &kp LS(PAGE_UP)    &kp ESCAPE  &kp HOME        &kp UP_ARROW    &kp PAGE_UP      &kp RS(PAGE_UP)
+&kp HOME        &kp LEFT_ARROW     &kp DOWN_ARROW             &kp RIGHT_ARROW  &kp END            &kp HOME    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END
+&kp LEFT_SHIFT  &kp END            &trans                     &kp PAGE_DOWN    &kp LS(PAGE_DOWN)  &trans      &trans          &trans          &kp END          &trans
+&kp PAGE_DOWN   &kp RS(PAGE_DOWN)  &mt LEFT_CONTROL KP_ENTER  &trans           &trans             &trans      &trans          &trans          &trans           &trans
             >;
         };
 
