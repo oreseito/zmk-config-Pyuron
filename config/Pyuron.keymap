@@ -103,6 +103,16 @@
             bindings = <&kp TAB>;
             key-positions = <10 11>;
         };
+
+        Layer0_IME_on {
+            bindings = <&to0_IME_on>;
+            key-positions = <25 26>;
+        };
+
+        Layer0_IME_off {
+            bindings = <&to0_IME_off>;
+            key-positions = <35 36>;
+        };
     };
 
     macros {
@@ -121,18 +131,9 @@
         };
     };
 
-    lt_to_layer_0: lt_to_layer_0 {
+    CB_hold_to0_IME_on: CB_hold_to0_IME_on {
         compatible = "zmk,behavior-hold-tap";
-        label = "LAYER_TAP_TO_0";
-        bindings = <&mo>, <&to0_IME_on>;
-
-        #binding-cells = <2>;
-        tapping-term-ms = <200>;
-    };
-
-    CBs_hold_to0_IME_on: CBs_hold_to0_IME_on {
-        compatible = "zmk,behavior-hold-tap";
-        label = "CBS_HOLD_TO0_IME_ON";
+        label = "CB_HOLD_TO0_IME_ON";
         bindings = <&to0_IME_on>, <&kp>;
 
         #binding-cells = <2>;
@@ -142,9 +143,9 @@
         require-prior-idle-ms = <170>;
     };
 
-    CBs_hold_to0_IME_off: CBs_hold_to0_IME_off {
+    CB_hold_to0_IME_off: CB_hold_to0_IME_off {
         compatible = "zmk,behavior-hold-tap";
-        label = "CBS_HOLD_TO0_IME_OFF";
+        label = "CB_HOLD_TO0_IME_OFF";
         bindings = <&to0_IME_off>, <&kp>;
 
         #binding-cells = <2>;
@@ -154,10 +155,46 @@
         flavor = "balanced";
     };
 
-    CBs_hold_toLayer_keypress: CBs_hold_toLayer_keypress {
+    CB_hold_toLayer_keypress: CB_hold_toLayer_keypress {
         compatible = "zmk,behavior-hold-tap";
-        label = "CBS_HOLD_TOLAYER_KEYPRESS";
+        label = "CB_HOLD_TOLAYER_KEYPRESS";
         bindings = <&to>, <&kp>;
+
+        #binding-cells = <2>;
+        tapping-term-ms = <170>;
+    };
+
+    CB_mod_minus_SFT_morph_at: CB_mod_minus_SFT_morph_at {
+        compatible = "zmk,behavior-mod-morph";
+        label = "CB_MOD_MINUS_SFT_MORPH_AT";
+        bindings = <&kp MINUS>, <&kp AT>;
+
+        #binding-cells = <0>;
+        mods = <(MOD_RSFT)>;
+    };
+
+    CB_mod_Q_SFT_morph_Exclamation: CB_mod_Q_SFT_morph_Exclamation {
+        compatible = "zmk,behavior-mod-morph";
+        label = "CB_MOD_Q_SFT_MORPH_EXCLAMATION";
+        bindings = <&kp QUESTION>, <&kp EXCLAMATION>;
+
+        #binding-cells = <0>;
+        mods = <(MOD_RSFT)>;
+    };
+
+    CB_mod_BS_SFT_morph_DEL: CB_mod_BS_SFT_morph_DEL {
+        compatible = "zmk,behavior-mod-morph";
+        label = "CB_MOD_BS_SFT_MORPH_DEL";
+        bindings = <&kp BACKSPACE>, <&kp DEL>;
+
+        #binding-cells = <0>;
+        mods = <(MOD_RSFT)>;
+    };
+
+    CB_hold_yt_tap_modmorph_BS_DEL: CB_hold_yt_tap_modmorph_BS_DEL {
+        compatible = "zmk,behavior-hold-tap";
+        label = "CB_HOLD_YT_TAP_MODMORPH_BS_DEL";
+        bindings = <&lt>, <&CB_mod_BS_SFT_morph_DEL>;
 
         #binding-cells = <2>;
         tapping-term-ms = <170>;
@@ -173,10 +210,10 @@
 
         default_layer_Onishi {
             bindings = <
-&kp Q             &kp L             &kp U      &kp COMMA     &kp DOT         &kp F                               &kp W                                  &kp R        &kp Y              &kp P
-&mt TAB E         &kp I             &kp A      &kp O         &kp MINUS       &kp K                               &kp T                                  &lt 4 N      &kp S              &kp H
-&mt LEFT_SHIFT Z  &mt LEFT_SHIFT X  &kp C      &kp V         &kp SEMICOLON   &CBs_hold_toLayer_keypress 2 COLON  &CBs_hold_toLayer_keypress 0 QUESTION  &kp G        &kp D              &kp M
-&kp J             &lt 3 B           &kp LCTRL  &kp LEFT_WIN  &lt 2 LEFT_ALT  &CBs_hold_to0_IME_off 0 SPACE       &CBs_hold_to0_IME_on 0 BACKSPACE       &lt 1 ENTER  &kp RIGHT_CONTROL  &kp DEL
+&kp Q             &kp L             &kp U      &kp COMMA     &kp DOT        &CB_hold_toLayer_keypress 1 F      &kp W                                 &kp R                                &kp Y              &kp P
+&mt TAB E         &kp I             &kp A      &kp O         &kp MINUS      &kp K                              &kp T                                 &CB_hold_toLayer_keypress 2 N        &kp S              &kp H
+&mt LEFT_SHIFT Z  &mt LEFT_SHIFT X  &kp C      &kp V         &kp SEMICOLON  &CB_hold_toLayer_keypress 2 COLON  &CB_hold_toLayer_keypress 0 QUESTION  &kp G                                &kp D              &kp M
+&kp J             &lt 3 B           &kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT   &CB_hold_to0_IME_off 0 SPACE       &CB_hold_to0_IME_on 0 ENTER           &CB_hold_yt_tap_modmorph_BS_DEL 1 0  &kp RIGHT_CONTROL  &mt RSHFT ESC
             >;
         };
 
@@ -191,8 +228,8 @@
 
         Number {
             bindings = <
-&kp MINUS        &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp ASTERISK  &kp MINUS  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp ASTERISK
-&kp SLASH        &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS      &kp SLASH  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS
+&kp SLASH        &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp ASTERISK  &kp SLASH  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp ASTERISK
+&kp MINUS        &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS      &kp MINUS  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS
 &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp PERIOD    &kp EQUAL  &trans           &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2
 &kp KP_NUMBER_3  &kp PERIOD       &trans           &kp KP_NUMBER_0  &trans        &trans     &trans           &trans           &trans           &kp PIPE
             >;
@@ -222,6 +259,15 @@
 &kp A   &kp S   &kp D   &kp F   &kp G   &kp H    &kp J   &kp K   &kp L   &trans
 &kp Z   &kp X   &kp C   &kp V   &kp B   &kp DEL  &kp H   &kp B   &kp N   &kp M
 &trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans
+            >;
+        };
+
+        layer_6 {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
