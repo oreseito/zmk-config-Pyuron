@@ -208,12 +208,12 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer_Onishi {
+        default_layer_Onishi_Layout {
             bindings = <
-&kp Q             &kp L             &kp U      &kp COMMA     &kp DOT        &CB_hold_toLayer_keypress 1 F      &kp W                                 &kp R                                &kp Y              &kp P
-&mt TAB E         &kp I             &kp A      &kp O         &kp MINUS      &kp K                              &kp T                                 &CB_hold_toLayer_keypress 2 N        &kp S              &kp H
-&mt LEFT_SHIFT Z  &mt LEFT_SHIFT X  &kp C      &kp V         &kp SEMICOLON  &CB_hold_toLayer_keypress 2 COLON  &CB_hold_toLayer_keypress 0 QUESTION  &kp G                                &kp D              &kp M
-&kp J             &lt 3 B           &kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT   &CB_hold_to0_IME_off 0 SPACE       &CB_hold_to0_IME_on 0 ENTER           &CB_hold_yt_tap_modmorph_BS_DEL 1 0  &kp RIGHT_CONTROL  &mt RSHFT ESC
+&mt QUESTION Q    &kp L             &kp U      &kp COMMA     &mt EXCL DOT   &CB_hold_toLayer_keypress 1 F      &kp W                                 &kp R                                &kp Y                          &kp P
+&mt TAB E         &kp I             &mt AT A   &kp O         &kp MINUS      &kp K                              &kp T                                 &CB_hold_toLayer_keypress 2 N        &CB_hold_toLayer_keypress 3 S  &kp H
+&mt LEFT_SHIFT Z  &mt LEFT_SHIFT X  &kp C      &kp V         &kp SEMICOLON  &CB_hold_toLayer_keypress 2 COLON  &CB_hold_toLayer_keypress 0 QUESTION  &kp G                                &kp D                          &kp M
+&kp J             &lt 5 B           &kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT   &CB_hold_to0_IME_off 0 SPACE       &CB_hold_to0_IME_on 0 ENTER           &CB_hold_yt_tap_modmorph_BS_DEL 1 0  &kp RIGHT_CONTROL              &mt RSHFT ESC
             >;
         };
 
@@ -235,6 +235,15 @@
             >;
         };
 
+        Symbol {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
         Bluetooth {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
@@ -253,21 +262,12 @@
             >;
         };
 
-        QWERT {
+        QWERT_Layout {
             bindings = <
 &kp Q   &kp W   &kp E   &kp R   &kp T   &kp Y    &kp U   &kp I   &kp O   &kp P
 &kp A   &kp S   &kp D   &kp F   &kp G   &kp H    &kp J   &kp K   &kp L   &trans
 &kp Z   &kp X   &kp C   &kp V   &kp B   &kp DEL  &kp H   &kp B   &kp N   &kp M
 &trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans
-            >;
-        };
-
-        layer_6 {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
