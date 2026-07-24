@@ -105,36 +105,55 @@
         };
 
         Layer0_IME_on {
-            bindings = <&to0_IME_on>;
+            bindings = <&MC_to0_IME_on>;
             key-positions = <25 26>;
         };
 
         Layer0_IME_off {
-            bindings = <&to0_IME_off>;
+            bindings = <&MC_to0_IME_off>;
             key-positions = <35 36>;
+        };
+
+        QWERT_Layout {
+            bindings = <&to 6>;
+            key-positions = <0 1 2 3>;
         };
     };
 
     macros {
-        to0_IME_on: to_layer_0 {
+        MC_to0_IME_on: to_layer_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&to 0 &kp INTERNATIONAL_4>;
             label = "TO_LAYER_0";
         };
 
-        to0_IME_off: to0_IME_off {
+        MC_to0_IME_off: to0_IME_off {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&to 0 &kp INTERNATIONAL_5>;
             label = "TO0_IME_OFF";
+        };
+
+        MC_passE: MC_passE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(O) &kp R &kp E &kp KP_N9 &kp KP_NUMBER_6 &kp KP_NUMBER_1 &kp KP_NUMBER_2 &kp E>;
+            label = "MC_PASSE";
+        };
+
+        MC_pass7979: MC_pass7979 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(O) &kp R &kp E &kp KP_N9 &kp KP_NUMBER_6 &kp KP_NUMBER_1 &kp KP_NUMBER_2 &kp KP_NUMBER_1 &kp KP_NUMBER_0 &kp KP_NUMBER_2 &kp KP_NUMBER_2 &kp KP_NUMBER_7 &kp KP_NUMBER_9 &kp KP_NUMBER_7 &kp KP_NUMBER_9>;
+            label = "MC_PASS7979";
         };
     };
 
     CB_hold_to0_IME_on: CB_hold_to0_IME_on {
         compatible = "zmk,behavior-hold-tap";
         label = "CB_HOLD_TO0_IME_ON";
-        bindings = <&to0_IME_on>, <&kp>;
+        bindings = <&MC_to0_IME_on>, <&kp>;
 
         #binding-cells = <2>;
         tapping-term-ms = <170>;
@@ -146,7 +165,7 @@
     CB_hold_to0_IME_off: CB_hold_to0_IME_off {
         compatible = "zmk,behavior-hold-tap";
         label = "CB_HOLD_TO0_IME_OFF";
-        bindings = <&to0_IME_off>, <&kp>;
+        bindings = <&MC_to0_IME_off>, <&kp>;
 
         #binding-cells = <2>;
         tapping-term-ms = <170>;
@@ -213,7 +232,7 @@
 &mt QUESTION Q    &kp L             &kp U      &kp COMMA     &mt EXCL DOT   &CB_hold_toLayer_keypress 1 F      &kp W                                 &kp R                                &kp Y                          &kp P
 &mt TAB E         &kp I             &mt AT A   &kp O         &kp MINUS      &kp K                              &kp T                                 &CB_hold_toLayer_keypress 2 N        &CB_hold_toLayer_keypress 3 S  &kp H
 &mt LEFT_SHIFT Z  &mt LEFT_SHIFT X  &kp C      &kp V         &kp SEMICOLON  &CB_hold_toLayer_keypress 2 COLON  &CB_hold_toLayer_keypress 0 QUESTION  &kp G                                &kp D                          &kp M
-&kp J             &lt 5 B           &kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT   &CB_hold_to0_IME_off 0 SPACE       &CB_hold_to0_IME_on 0 ENTER           &CB_hold_yt_tap_modmorph_BS_DEL 1 0  &kp RIGHT_CONTROL              &mt RSHFT ESC
+&kp J             &lt 5 B           &kp LCTRL  &kp LEFT_WIN  &kp LEFT_ALT   &CB_hold_to0_IME_off 0 SPACE       &CB_hold_to0_IME_on 0 ENTER           &CB_hold_yt_tap_modmorph_BS_DEL 1 0  &kp TAB                        &mt RSHFT ESC
             >;
         };
 
@@ -237,10 +256,10 @@
 
         Symbol {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&MC_pass7979  &MC_passE  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans     &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
